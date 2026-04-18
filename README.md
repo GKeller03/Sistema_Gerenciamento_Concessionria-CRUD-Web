@@ -36,7 +36,7 @@ O **AutoHub** é uma aplicação web de gerenciamento para concessionárias dese
 
 ### 👤 Autenticação e Controle de Acesso
 - Login com e-mail e senha
-- Sessão gerenciada via `HttpSession`
+- Cadastro de novos usuários com campos distintos por perfil: CPF e telefone para Cliente, cargo para Administrador
 - Dois perfis: **Administrador** e **Cliente**
 - **Dashboards distintos** — cada perfil vê apenas o que lhe compete
 - Proteção de rotas no servidor — redirecionamento automático por nível de acesso
