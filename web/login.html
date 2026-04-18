@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHub - Login</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <img src="resources/img/Logo-AutoHub.png" alt="AutoHub Logo" class="logo-img">
+        
+        <h2>Acesso ao Sistema</h2>
+        
+        <form action="login" method="POST">
+            <input type="email" name="email" placeholder="E-mail corporativo" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            
+            <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+        
+        <div id="msgErro" style="display:none; color: #ff4444; margin: 10px 0; font-size: 14px;">
+            Usuário ou senha inválidos.
+        </div>
+
+        <a href="cadastro_usuario.html" class="link-footer">Criar uma nova conta</a>
+    </div>
+
+    <script>
+        if (window.location.search.includes('erro=1')) {
+            document.getElementById('msgErro').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

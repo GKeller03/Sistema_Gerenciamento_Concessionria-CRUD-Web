@@ -1,0 +1,99 @@
+/* Variáveis para facilitar a manutenção das cores */
+:root {
+    --bg-dark: #121212;
+    --bg-card: #181818;
+    --primary-red: #e30613;
+    --text-white: #ffffff;
+    --text-gray: #b3b3b3;
+    --border-color: #282828;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Container centralizado (tipo o card da foto) */
+.container {
+    background-color: var(--bg-card);
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Títulos em vermelho */
+h1, h2 {
+    color: var(--primary-red);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+/* Estilo dos campos de entrada (Inputs) */
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+input[type="number"], 
+select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #222;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: white;
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho */
+}
+
+input:focus {
+    border-color: var(--primary-red);
+    outline: none;
+}
+
+/* Botão principal vermelho */
+.btn-primary {
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #b3050f;
+    transform: scale(1.02);
+}
+
+/* Links (Criar nova conta, voltar) */
+.link-footer {
+    color: var(--primary-red);
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-top: 20px;
+}
+
+.link-footer:hover {
+    text-decoration: underline;
+}
+
+/* Logo */
+.logo-img {
+    max-width: 200px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoHub - Criar Nova Conta</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+</head>
+<body>
+
+    <div class="container" style="max-width: 450px; margin: 40px auto;">
+        <img src="resources/img/Logo-AutoHub.png" alt="AutoHub Logo" class="logo-img">
+        
+        <h2>Criar Nova Conta</h2>
+
+        <div id="errorBox" class="error-msg" style="display: none; color: #ff4444; margin-bottom: 15px; font-size: 14px;"></div>
+
+        <form id="formCadastro" action="usuario?action=cadastrar" method="POST">
+            
+            <input type="text" name="nome" placeholder="Nome Completo" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+
+            <label style="color: var(--primary-red); display: block; text-align: left; font-size: 12px; margin-bottom: 5px; font-weight: bold; text-transform: uppercase;">
+                Tipo de Usuário:
+            </label>
+            <select name="tipoUsuario" id="tipoUsuario" onchange="toggleCampos()">
+                <option value="Cliente">Cliente</option>
+                <option value="Administrador">Administrador</option>
+            </select>
+
+            <div id="campoCliente">
+                <input type="text" name="cpf" id="cpf" placeholder="CPF (000.000.000-00)">
+                <input type="text" name="telefone" id="telefone" placeholder="Telefone ((00) 00000-0000)">
+            </div>
+
+            <div id="campoAdmin" style="display:none;">
+                <input type="text" name="cargo" id="cargo" placeholder="Cargo (Ex: Gerente de Vendas)">
+            </div>
+
+            <button type="submit" class="btn-primary" style="margin-top: 10px;">Finalizar Cadastro</button>
+        </form>
+
+        <a href="index.html" class="link-footer">Já tenho conta (Login)</a>
+    </div>
+
+    <script>
+    // --- Lógica de Máscaras (Igual à sua original) ---
+    function mascaraCPF(valor) {
+        return valor.replace(/\D/g, '').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})/, '$1-$2').replace(/(-\d{2})\d+?$/, '$1');
+    }
+
+    function mascaraTelefone(valor) {
+        return valor.replace(/\D/g, '').replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2').replace(/(-\d{4})\d+?$/, '$1');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const cpfInput = document.getElementById('cpf');
+        const telInput = document.getElementById('telefone');
+
+        cpfInput.addEventListener('input', (e) => e.target.value = mascaraCPF(e.target.value));
+        telInput.addEventListener('input', (e) => e.target.value = mascaraTelefone(e.target.value));
+
+        document.getElementById('formCadastro').addEventListener('submit', function(e) {
+            cpfInput.value = cpfInput.value.replace(/\D/g, '');
+            telInput.value = telInput.value.replace(/\D/g, '');
+        });
+    });
+
+    // --- Lógica de Toggle de Campos ---
+    function toggleCampos() {
+        var tipo = document.getElementById("tipoUsuario").value;
+        var divCliente = document.getElementById("campoCliente");
+        var divAdmin = document.getElementById("campoAdmin");
+        
+        divCliente.style.display = (tipo === "Cliente") ? "block" : "none";
+        divAdmin.style.display = (tipo === "Administrador") ? "block" : "none";
+        
+        document.getElementById("cpf").disabled = (tipo !== "Cliente");
+        document.getElementById("telefone").disabled = (tipo !== "Cliente");
+        document.getElementById("cargo").disabled = (tipo !== "Administrador");
+    }
+    </script>
+</body>
+</html>
