@@ -316,9 +316,9 @@ private static final String PASSWORD = "sua_senha";
 ## 👨‍💻 Autor
 
 **Seu Nome**  
-- LinkedIn: [linkedin.com/in/seu-perfil](https://linkedin.com/in/seu-perfil)  
-- GitHub: [@seu-usuario](https://github.com/seu-usuario)  
-- Email: seu@email.com
+- LinkedIn: [linkedin.com/in/seu-perfil](https://www.linkedin.com/in/gabriel-keller-a2a575354/)  
+- GitHub: [@seu-usuario](https://github.com/GKeller03)  
+- Email: gabrielkeller03052005@gmail.com
 
 ---
 
