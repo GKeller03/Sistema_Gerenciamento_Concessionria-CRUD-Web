@@ -14,15 +14,17 @@
 
 ## 📸 Preview
 
-| Login | Dashboard Admin | Dashboard Cliente |
-|-------|----------------|-------------------|
-| ![Login](screenshots/login.png) | ![Admin](screenshots/dashboard-admin.png) | ![Cliente](screenshots/dashboard-cliente.png) |
+| Login | Cadastro Cliente | Cadastro Admin |
+|-------|-----------------|----------------|
+| ![Login](screenshots/login.png) | ![Cadastro Cliente](screenshots/cadastro-cliente.png) | ![Cadastro Admin](screenshots/cadastro-admin.png) |
 
-| Estoque de Veículos | Controle de Oficina | Área de Compras |
-|---------------------|--------------------|--------------------|
-| ![Estoque](screenshots/estoque.png) | ![Oficina](screenshots/oficina.png) | ![Compras](screenshots/pedido.png) |
+| Dashboard Admin | Dashboard Cliente | Estoque |
+|----------------|-------------------|---------|
+| ![Admin](screenshots/dashboard-admin.png) | ![Cliente](screenshots/dashboard-cliente.png) | ![Estoque](screenshots/estoque.png) |
 
-> Adicione as imagens na pasta `screenshots/` do repositório para ativar o preview acima.
+| Controle de Oficina | Histórico | Área de Compras |
+|--------------------|-----------|----------------|
+| ![Oficina](screenshots/oficina.png) | ![Histórico](screenshots/historico.png) | ![Compras](screenshots/pedido.png) |
 
 ---
 
@@ -172,8 +174,8 @@ AutoHub/
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/autohub.git
-cd autohub
+git clone https://github.com/GKeller03/AutoHub-Concessionaria-CRUD-Web.git
+cd AutoHub-Concessionaria-CRUD-Web
 ```
 
 ### 2. Configure o banco de dados
@@ -222,7 +224,6 @@ CREATE TABLE manutencao (
     FOREIGN KEY (id_carro) REFERENCES carro(id)
 );
 
--- Usuários padrão para testes
 INSERT INTO usuario (nome, email, senha, tipo_usuario)
 VALUES ('Admin', 'admin@autohub.com', 'admin123', 'Administrador');
 
@@ -315,9 +316,9 @@ private static final String PASSWORD = "sua_senha";
 
 ## 👨‍💻 Autor
 
-**Seu Nome**  
-- LinkedIn: [linkedin.com/in/seu-perfil](https://www.linkedin.com/in/gabriel-keller-a2a575354/)  
-- GitHub: [@seu-usuario](https://github.com/GKeller03)  
+**Gabriel Keller**
+- LinkedIn: [linkedin.com/in/gabriel-keller-a2a575354](https://www.linkedin.com/in/gabriel-keller-a2a575354/)
+- GitHub: [@GKeller03](https://github.com/GKeller03)
 - Email: gabrielkeller03052005@gmail.com
 
 ---
