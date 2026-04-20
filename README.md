@@ -176,5 +176,4 @@ private static final String PASSWORD = "sua_senha";
 - Email: gabrielkeller03052005@gmail.com
 
 <p align="center">
-  <b>AutoHub</b> — desenvolvido como projeto de portfólio para demonstrar habilidades em Java Web, MVC e desenvolvimento back-end.
-</p>
+
