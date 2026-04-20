@@ -30,7 +30,10 @@
 
 ## 📋 Sobre o Projeto
 
-O **AutoHub** é uma aplicação web de gerenciamento para concessionárias desenvolvida com **Java puro** (sem frameworks), cobrindo o ciclo completo de um sistema real: autenticação com controle de sessão, dois perfis de usuário com dashboards distintos, CRUD de veículos, fluxo de compra para clientes e gerenciamento de oficina com histórico de manutenções.
+O **AutoHub** é uma aplicação web para gerenciamento de concessionárias desenvolvida em Java puro, que cobre todo o ciclo de um sistema real. O projeto inclui autenticação com controle de sessão, dois perfis de usuário (Administrador e Cliente) com dashboards distintos, CRUD completo de veículos, fluxo de compra e gerenciamento de oficina com histórico de manutenções.
+
+A aplicação segue o padrão MVC com separação clara entre camadas, utiliza conceitos de orientação a objetos como herança, além do Command Pattern para organizar as ações de negócio. Conta também com integração com MySQL via JDBC, proteção de rotas no servidor, controle de estado das entidades e uma interface moderna em dark theme construída com HTML e CSS puro.
+
 
 ---
 
@@ -39,109 +42,24 @@ O **AutoHub** é uma aplicação web de gerenciamento para concessionárias dese
 ### 👤 Autenticação e Controle de Acesso
 - Login com e-mail e senha
 - Cadastro de novos usuários com campos distintos por perfil: CPF e telefone para Cliente, cargo para Administrador
-- Dois perfis: **Administrador** e **Cliente**
-- **Dashboards distintos** — cada perfil vê apenas o que lhe compete
+- Dois perfis: Administrador e Cliente
+- Dashboards distintos — cada perfil vê apenas o que lhe compete
 - Proteção de rotas no servidor — redirecionamento automático por nível de acesso
 
 ### 🚗 Gestão de Estoque — Administrador
 - Cadastro de veículos com modelo, preço, placa, cor e ano
-- Listagem em cards com **status dinâmico**: `Disponível` · `Vendido` · `Manutenção`
+- Listagem em cards com status dinâmico: `Disponível` · `Vendido` · `Manutenção`
 - Edição e exclusão de veículos
 
 ### 🔧 Controle de Oficina — Administrador
 - Tabela de veículos em reparo ativo com entrada, serviço, revisão e status
-- Botão **Finalizar** para encerrar a manutenção e atualizar o status do veículo
+- Botão Finalizar para encerrar a manutenção e atualizar o status do veículo
 - **Ver Histórico** — lista completa de manutenções concluídas com data de saída e status final
 
 ### 🛒 Área de Compras — Cliente
-- Dashboard com acesso a **Visualizar Estoque** e **Fazer Pedido**
+- Dashboard com acesso a Visualizar Estoque e Fazer Pedido
 - Catálogo de veículos disponíveis com preço, ano, cor e status
-- Botão **Comprar Agora** para registrar o pedido diretamente
-
----
-
-## 🏗️ Arquitetura MVC + Command Pattern
-
-```
-AutoHub/
-│
-├── WebContent/                         # Camada View
-│   ├── index.html
-│   ├── login.html
-│   ├── cadastro_usuario.html
-│   ├── dashboard.jsp
-│   ├── lista_carros.jsp
-│   ├── comprar_carro.jsp
-│   ├── editar_carro.jsp
-│   ├── gerenciar_oficina.jsp
-│   ├── historico_manutencao.jsp
-│   ├── registrar_manutencao.jsp
-│   └── WEB-INF/
-│
-└── src/
-    │
-    ├── command/                        # Command Pattern — uma classe por ação
-    │   ├── Command.java                  (interface)
-    │   ├── LoginCommand.java
-    │   ├── SalvarCarroCommand.java
-    │   ├── AtualizarCarroCommand.java
-    │   ├── ExcluirCarroCommand.java
-    │   ├── ListarCarrosCommand.java
-    │   ├── PedidoCommand.java
-    │   ├── RegistrarManutencaoCommand.java
-    │   └── FinalizarManutencaoCommand.java
-    │
-    ├── controller/                     # Servlets — roteamento HTTP
-    │   ├── CarroController.java
-    │   ├── LoginController.java
-    │   ├── ManutencaoController.java
-    │   ├── PedidoController.java
-    │   └── UsuarioController.java
-    │
-    ├── dao/                            # Acesso ao banco de dados (JDBC)
-    │   ├── CarroDAO.java
-    │   ├── ManutencaoDAO.java
-    │   ├── PedidoDAO.java
-    │   └── UsuarioDAO.java
-    │
-    ├── model/                          # Entidades do sistema
-    │   ├── Usuario.java
-    │   ├── Administrador.java
-    │   ├── Cliente.java
-    │   ├── Carro.java
-    │   ├── Manutencao.java
-    │   └── Pedido.java
-    │
-    └── util/
-        └── DatabaseConnection.java     # Gerenciador de conexão com MySQL
-```
-
-### Fluxo de uma Requisição
-
-```
-[Navegador]
-     │
-     ▼
-[Controller — Servlet]    ←── valida sessão e nível de acesso
-     │
-     ▼
-[Command]                 ←── executa a ação de negócio isolada
-     │
-     ▼
-[DAO + JDBC]              ←── consulta ou persiste no MySQL
-     │
-     ▼
-[JSP — View]              ←── renderiza a resposta ao usuário
-```
-
-| Camada | Tecnologia | Responsabilidade |
-|--------|-----------|-----------------|
-| **View** | JSP / HTML | Interface renderizada no servidor |
-| **Controller** | Java Servlets | Recepção, validação de sessão e roteamento HTTP |
-| **Command** | Java — interface `Command` | Encapsulamento de cada ação de negócio |
-| **DAO** | Java + JDBC | Operações de leitura e escrita no banco |
-| **Model** | POJOs Java | Representação das entidades do domínio |
-| **Util** | `DatabaseConnection` | Gerenciamento da conexão MySQL |
+- Botão Comprar Agora para registrar o pedido diretamente
 
 ---
 
@@ -249,85 +167,13 @@ private static final String PASSWORD = "sua_senha";
 4. Clique com o botão direito no projeto → `Run As > Run on Server`
 5. Acesse: `http://localhost:8080/autohub`
 
-### Credenciais padrão para teste
-
-| Perfil | E-mail | Senha |
-|--------|--------|-------|
-| Administrador | admin@autohub.com | admin123 |
-| Cliente | cliente@autohub.com | cliente123 |
-
----
-
-## 📊 Modelo de Dados
-
-```
-┌──────────────────┐          ┌───────────────────┐
-│     USUARIO      │          │       CARRO        │
-├──────────────────┤          ├───────────────────┤
-│ id (PK)          │          │ id (PK)            │
-│ nome             │          │ modelo             │
-│ email            │          │ placa              │
-│ senha            │          │ cor                │
-│ tipo_usuario     │          │ ano                │
-└────────┬─────────┘          │ preco              │
-         │                    │ status             │
-         │              ┌─────┴──────┐   ┌─────────┴──────────┐
-         │              │   PEDIDO   │   │    MANUTENCAO       │
-         │              ├────────────┤   ├────────────────────┤
-         └──────────────┤id_usuario  │   │ id_carro (FK)       │
-                        │id_carro    │   │ descricao           │
-                        │data_pedido │   │ data_entrada        │
-                        └────────────┘   │ data_saida          │
-                                         │ em_revisao          │
-                                         │ status_final        │
-                                         └────────────────────┘
-```
-
----
-
-## 🧠 O que Este Projeto Demonstra
-
-- Desenvolvimento web back-end com **Java puro**, sem Spring ou outros frameworks
-- Padrão **MVC** com separação real entre Controller, Model e View
-- **Command Pattern** com interface `Command` — cada ação de negócio em sua própria classe
-- **Herança em OOP** — `Administrador` e `Cliente` herdam de `Usuario`
-- **Autenticação com HttpSession** e controle de acesso por perfil
-- **Dashboards distintos** renderizados condicionalmente pelo mesmo JSP
-- Operações **CRUD completas** com JDBC e MySQL
-- **Proteção de rotas no servidor** — validação de sessão nos Servlets
-- Gerenciamento de **estado de entidades** — status do veículo alterado por ações do sistema
-- Fluxos de negócio reais: **compra pelo cliente** e **ciclo de manutenção pelo admin**
-- Interface **dark theme** construída do zero com HTML/CSS puro
-
----
-
-## 🔮 Possíveis Melhorias Futuras
-
-- [ ] Hash de senha com BCrypt
-- [ ] Paginação e filtros no estoque
-- [ ] Confirmação de pedido com e-mail automático
-- [ ] Relatórios de vendas e manutenções em PDF
-- [ ] API REST com retorno JSON
-- [ ] Migração para Spring Boot + Spring Security + Hibernate
-- [ ] Testes unitários com JUnit e Mockito
-- [ ] Deploy em nuvem (Railway / Render)
-
 ---
 
 ## 👨‍💻 Autor
 
 **Gabriel Keller**
 - LinkedIn: [linkedin.com/in/gabriel-keller-a2a575354](https://www.linkedin.com/in/-gabriel-keller/)
-- GitHub: [@GKeller03](https://github.com/GKeller03)
 - Email: gabrielkeller03052005@gmail.com
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
 
 <p align="center">
   <b>AutoHub</b> — desenvolvido como projeto de portfólio para demonstrar habilidades em Java Web, MVC e desenvolvimento back-end.
