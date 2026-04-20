@@ -317,7 +317,7 @@ private static final String PASSWORD = "sua_senha";
 ## 👨‍💻 Autor
 
 **Gabriel Keller**
-- LinkedIn: [linkedin.com/in/gabriel-keller-a2a575354](https://www.linkedin.com/in/gabriel-keller-a2a575354/)
+- LinkedIn: [linkedin.com/in/gabriel-keller-a2a575354](https://www.linkedin.com/in/-gabriel-keller/)
 - GitHub: [@GKeller03](https://github.com/GKeller03)
 - Email: gabrielkeller03052005@gmail.com
 
