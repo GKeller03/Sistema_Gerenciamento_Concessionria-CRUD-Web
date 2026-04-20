@@ -172,7 +172,7 @@ private static final String PASSWORD = "sua_senha";
 ## 👨‍💻 Autor
 
 **Gabriel Keller**
-- LinkedIn: [(https://www.linkedin.com/in/-gabriel-keller/)]
+- LinkedIn: https://www.linkedin.com/in/-gabriel-keller/
 - Email: gabrielkeller03052005@gmail.com
 
 <p align="center">
